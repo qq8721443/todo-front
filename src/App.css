@@ -145,6 +145,22 @@ span{
   justify-content: center;
 }
 
+#btnkakao{
+  position: absolute;
+  bottom: 10px;
+  left:20px;
+}
+
+#btnkakao:hover{
+  opacity: 0.7;
+}
+
+#btnkakao span{
+  margin-bottom: 20px;
+  color: #290001;
+  font-weight: 600;
+  font-size: large;
+}
 
 .todoItemsContent{
   margin:10px;
@@ -197,6 +213,7 @@ div#control input{
 }
 
 #container {
+  position: relative;
   margin-top: 15px;
   flex-direction: column;
   width:500px;

@@ -72,9 +72,13 @@ function App() {
   }
 
   React.useEffect(() => {
-    getList();
+    getList();       
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [owner])
+
+  React.useEffect(() => {
+    window.Kakao.init('c5c2971685be0d635f82fa9e5c7a0c7f')
+  },[])
 
   const removeHide = (index) => {
     const list = document.getElementsByClassName('todoList')
@@ -182,6 +186,22 @@ function App() {
     );
   }
   
+  function sendLink(){
+    const temp = []
+    list.map((item, index) => (
+      temp.push(`✔${list[index].startTime}:${list[index].endTime} ${list[index].content}\n`)
+    ))
+    
+    window.Kakao.Link.sendDefault({
+      objectType:'text',
+      buttonTitle:'일정 확인하기!',
+      text:`${owner}님의 일정입니다!\n${temp}`,
+      link:{
+        mobileWebUrl:'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+        webUrl:'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
+      },
+    })
+  }
 
   return (
     <center>
@@ -201,7 +221,12 @@ function App() {
             <TodoList/>
         </div>
         
-        
+        <div id="btnkakao" onClick={() => sendLink()}>
+        <a id="kakao-link-btn">
+          <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" width="30"/>
+        </a>
+        <span>일정 카카오톡으로 공유하기</span>
+        </div>
       </div>
     </center>
       

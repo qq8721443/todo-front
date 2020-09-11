@@ -1,0 +1,239 @@
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+span{
+  display: inline-block;
+}
+
+#compo {
+  display:flex;
+  width:100%;
+  background-color: beige;
+}
+
+#compo:hover {
+  background-color: blue;
+}
+
+.item {
+  flex:1;
+  float: left;
+}
+
+#items{
+  flex:1;
+  
+  
+  align-items: center;
+  margin-top: 10px;
+}
+
+.todoList{
+  position: relative;
+  vertical-align: middle;
+  border-width: 4px;
+  border-color: #729EA1;
+  border-style: solid;
+  border-radius: 16px;
+  margin:5px 0;
+}
+
+#btdelete{
+  display: inline-block;
+  right:15px;
+  width:5px;
+}
+
+
+#dropdown {
+  all:unset;
+  width:40px;
+  height:30px;
+  background-color: white;
+  border-radius: 5px;
+  margin:3px;
+  padding-left: 5px;
+  padding-top: 5px;
+}
+
+input{
+  all:unset;
+}
+
+#time{
+  width:50px;
+  background-color: white;
+  border-radius: 5px;
+}
+
+option{
+  border-radius: 5px;
+}
+
+.delete{
+  color: gray;
+}
+
+.delete:hover{
+  color:black;
+}
+
+.hidden{
+  visibility: hidden;
+}
+
+.button{
+  color:gray;
+}
+
+#submitbutton{
+  background-color: #A8DCD1;
+  width:60px;
+  height:33px;
+  padding:1px 2px;
+  border-radius: 10px;
+  color: white;
+}
+
+#submitbutton:hover{
+  background-color: #A8DCF4;
+}
+
+#check{
+}
+
+#btDone:hover{
+  color: #7ea04d;
+}
+
+#btNothing:hover{
+  color: #fe7171;
+}
+
+#b1{
+  color:green;
+}
+
+#btDone, #btNothing {
+  margin-left: 3px;
+  position: relative;
+  right:-5px;
+}
+
+.state{
+  color:gray;
+  margin-right: 5px;
+}
+
+span{
+  vertical-align: middle;
+}
+
+.todoList:hover{
+  flex:1;
+  background-color: powderblue;
+  justify-content: center;
+}
+
+.todoItems{
+}
+
+.todoItemsContent{
+  margin:10px;
+  display:inline-block;
+  width:240px;
+  background-color: #2ec1ac;
+  color:white;
+  border-radius: 10px;
+}
+
+#item1{
+  flex:1;
+  background-color: red;
+}
+
+#item2{
+  flex:1;
+  background-color: green;
+}
+
+#item3{
+  flex:1;
+  background-color: blue;
+}
+
+div#control input{
+  margin:3px;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.horizontal {
+  height:10;
+  border-bottom-width: 10;
+  border-bottom-color: black;
+  margin:10
+}
+
+#container {
+  margin-top: 15px;
+  flex-direction: column;
+  width:500px;
+  height:700px;
+  background-color: #d2f6c5;
+  border-radius: 15px;
+}
+
+#control {
+  display: flex;
+  justify-content: center;
+}
+ 
+#content {
+  background-color: white;
+  border-radius: 5px;
+  width:200px;
+}
+
+#listtime {
+  background-color: #B6A39E;
+  border-radius: 10px;
+  color: white;
+  width:100px;
+  margin-left: 30px;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}

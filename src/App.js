@@ -31,7 +31,7 @@ function App() {
 
   const submitFunction = () => {
     //setLoading(true)
-    fetch('/api/save/', {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/save/', {
       method:'POST',
       headers : { 
         'Content-Type': 'application/json',

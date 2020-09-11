@@ -1,12 +1,9 @@
 import React from 'react';
 import './App.css';
 import {MdDone} from 'react-icons/md';
-import {MdClose} from 'react-icons/md';
 import {MdDelete} from 'react-icons/md';
 import {AiOutlineLine} from 'react-icons/ai';
-import {AiOutlineClose} from 'react-icons/ai';
 import {AiOutlineClockCircle} from 'react-icons/ai';
-import Test from './components/test';
 
 function App() {
   const [startTime, setStartTime] = React.useState('')
@@ -14,7 +11,7 @@ function App() {
   const [text, setText] = React.useState('')
   const [owner, setOwner] = React.useState('정기')
   const [list, setList] = React.useState([])
-  const [isLoading, setLoading] = React.useState(false)
+ // const [isLoading, setLoading] = React.useState(false)
 
   let StartTime = (e) => {
     setStartTime(e.target.value);
@@ -33,7 +30,7 @@ function App() {
   }
 
   const submitFunction = () => {
-    setLoading(true)
+    //setLoading(true)
     fetch('/api/save/', {
       method:'POST',
       headers : { 
@@ -49,7 +46,7 @@ function App() {
     })
     .then(res => res.json())
     .then(json => {
-      setLoading(false)
+      //setLoading(false)
       alert(JSON.stringify(json))
       getList()
 
@@ -76,11 +73,12 @@ function App() {
 
   React.useEffect(() => {
     getList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [owner])
 
   const removeHide = (index) => {
     const list = document.getElementsByClassName('todoList')
-    const check = document.getElementById('check')
+    //const check = document.getElementById('check')
     //console.log(list[index].childNodes[0].classList)
     list[index].childNodes[0].classList.remove('hidden')
     //console.log(list[index].getElementsByClassName('state hidden')[0])
@@ -91,7 +89,7 @@ function App() {
 
   const addHide = (index) => {
     const list = document.getElementsByClassName('todoList')
-    const check = document.getElementById('check')
+    //const check = document.getElementById('check')
     console.log(list[index].childNodes[0].classList)
     list[index].childNodes[0].classList.add('hidden')
     list[index].childNodes[4].classList.add('hidden')

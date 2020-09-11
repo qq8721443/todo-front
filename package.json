@@ -32,5 +32,6 @@
       "last 1 safari version"
     ]
   },
-  "proxy":"https://nayoung-todo-backend.herokuapp.com"
+  "proxy":"https://nayoung-todo-backend.herokuapp.com",
+  "CI":""
 }

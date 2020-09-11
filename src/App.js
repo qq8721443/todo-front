@@ -189,7 +189,7 @@ function App() {
   function sendLink(){
     const temp = []
     list.map((item, index) => (
-      temp.push(`✔${list[index].startTime}:${list[index].endTime} ${list[index].content}\n`)
+      temp.push(`🥑${list[index].startTime}:${list[index].endTime} ${list[index].content}\n`)
     ))
     
     window.Kakao.Link.sendDefault({

@@ -55,7 +55,7 @@ function App() {
   }
 
   const getList = () => {
-    fetch('/api/call/', {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/call/', {
       method:'POST',
       headers:{
         'content-type':'application/json'

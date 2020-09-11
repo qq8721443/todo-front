@@ -96,7 +96,7 @@ function App() {
   }
 
   const removeList = (item) => {
-    fetch('/api/remove/', {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/remove/', {
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -114,7 +114,7 @@ function App() {
   }
 
   const changeDone = (item) => {
-    fetch('/api/changeState/', {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/changeState/', {
       method:'POST',
       headers:{
         'content-type':'application/json'
@@ -131,7 +131,7 @@ function App() {
   }
 
   const changeNothing = (item) => {
-    fetch('/api/changeNothing/', {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/changeNothing/', {
       method:'POST',
       headers:{
         'content-type':'application/json'

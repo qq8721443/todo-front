@@ -11,6 +11,7 @@ function App() {
   const [text, setText] = React.useState('')
   const [owner, setOwner] = React.useState('정기')
   const [list, setList] = React.useState([])
+  const [isLoading, setLoading] = React.useState(false)
  // const [isLoading, setLoading] = React.useState(false)
 
   let StartTime = (e) => {
@@ -31,6 +32,7 @@ function App() {
 
   const submitFunction = () => {
     //setLoading(true)
+    
     fetch('https://nayoung-todo-backend.herokuapp.com/api/save/', {
       method:'POST',
       headers : { 
@@ -46,8 +48,9 @@ function App() {
     })
     .then(res => res.json())
     .then(json => {
-      //setLoading(false)
+      
       alert(JSON.stringify(json))
+      //setLoading(false)
       getList()
 
     })
@@ -55,6 +58,7 @@ function App() {
   }
 
   const getList = () => {
+    setLoading(true)
     fetch('https://nayoung-todo-backend.herokuapp.com/api/call/', {
       method:'POST',
       headers:{
@@ -67,6 +71,7 @@ function App() {
     .then(response => response.json())
     .then(json => {
       setList(json.data)
+      setLoading(false)
     })
     .catch(e=>console.log(e))
   }
@@ -152,6 +157,24 @@ function App() {
     .catch(e=>console.log(e))
   }
 
+  const removeAll = () => {
+    fetch('https://nayoung-todo-backend.herokuapp.com/api/removeAll/', {
+      method:'POST',
+      headers:{
+        'content-type':'application/json'
+      },
+      body:JSON.stringify({
+        owner:owner
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      alert('전체 삭제 완료!')
+      getList();
+    })
+    .catch(e=>console.log(e))
+  }
+
   function TodoList() {
     const listItems = list.map((items, index) =>{
       if(items.state===0){
@@ -217,9 +240,17 @@ function App() {
           <input type="text" id="content" required maxLength="100" size="10" placeholder="할 일을 입력해주세요" onChange={Text}></input>
           <input type="button" onClick={() => {alert(owner);submitFunction()}} id="submitbutton" value="등록"/>
         </div>
+        {isLoading?
+        <>
+        <div>로딩중입니다!</div>
+        
+        </>
+        :
         <div id="items">
             <TodoList/>
         </div>
+        }
+        
         
         <div id="btnkakao" onClick={() => sendLink()}>
         <a id="kakao-link-btn" href="#!">
@@ -227,6 +258,11 @@ function App() {
         </a>
         <span>일정 카카오톡으로 공유하기</span>
         </div>
+        <div id="reset" onClick={() => removeAll()}>
+        <img src="https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg" width="30" alt="web server error"/>
+        <span>전체 삭제하기</span>
+        </div>
+
       </div>
     </center>
       

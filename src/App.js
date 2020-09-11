@@ -222,8 +222,8 @@ function App() {
         </div>
         
         <div id="btnkakao" onClick={() => sendLink()}>
-        <a id="kakao-link-btn">
-          <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" width="30"/>
+        <a id="kakao-link-btn" href="#!">
+          <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" width="30" alt="web server error!" />
         </a>
         <span>일정 카카오톡으로 공유하기</span>
         </div>

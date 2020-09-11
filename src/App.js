@@ -195,7 +195,7 @@ function App() {
     window.Kakao.Link.sendDefault({
       objectType:'text',
       buttonTitle:'일정 확인하기!',
-      text:`${owner}님의 일정입니다!\n${temp}`,
+      text:`${owner}${owner==="정기"?'🧏‍♂':'🧏‍♀'}님의 일정입니다!\n${temp}`,
       link:{
         mobileWebUrl:'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',
         webUrl:'https://developers.kakao.com/docs/js/kakaotalklink#텍스트-템플릿-보내기',

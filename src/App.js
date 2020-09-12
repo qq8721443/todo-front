@@ -4,6 +4,7 @@ import {MdDone} from 'react-icons/md';
 import {MdDelete} from 'react-icons/md';
 import {AiOutlineLine} from 'react-icons/ai';
 import {AiOutlineClockCircle} from 'react-icons/ai';
+import Swipe from 'react-easy-swipe'; //for using react easy swipe
 
 function App() {
   const [startTime, setStartTime] = React.useState('')
@@ -187,27 +188,72 @@ function App() {
     }
   }
 
+  const onSwipeLeft = (index) => {
+    console.log(document.getElementsByClassName('todoList')[index].childNodes[5].style.width)
+    document.getElementsByClassName('todoList')[index].childNodes[5].style.width = "100px"
+    //document.getElementsByClassName('todoList')[index].childNodes[5].style.display = "inline"
+    //if(document.getElementsByClassName('todoList')[index].childNodes[5].classList.value ==="add"){
+      //document.getElementsByClassName('todoList')[index].childNodes[5].classList.remove('add')
+      //document.getElementsByClassName('todoList')[index].childNodes[5].classList.add('addswipe')
+    
+  }
+
+  const onSwipeRight = (index) => {
+    console.log(document.getElementsByClassName('todoList')[index].childNodes[5])
+    document.getElementsByClassName('todoList')[index].childNodes[5].style.width="0px"
+    //document.getElementsByClassName('todoList')[index].childNodes[5].style.display="none"
+    //if(document.getElementsByClassName('todoList')[index].childNodes[5].classList.value === "addswipe"){
+    //  document.getElementsByClassName('todoList')[index].childNodes[5].classList.remove('addswipe')
+    //  document.getElementsByClassName('todoList')[index].childNodes[5].classList.add('add')
+  }
+
   function TodoList() {
     const listItems = list.map((items, index) =>{
       if(items.state===0){
         return(
+          <Swipe
+          allowMouseEvents
+          onSwipeRight={() => onSwipeRight(index)}
+          onSwipeLeft={() => onSwipeLeft(index)}>
           <div class="todoList" onMouseOver={() => removeHide(index)} onMouseOut={() => addHide(index)}>
             <span id="btdelete" class="delete hidden" onClick={() => {alert('삭제 클릭'); removeList(items)}}><MdDelete size={20}/></span>
             <span id="listtime" class="todoItems"><AiOutlineClockCircle size={13}/>{items.startTime}~{items.endTime}</span>
             <span class="todoItemsContent">{items.content}</span>
             <span class="state" ><AiOutlineLine size={25}/></span>
             <span id="check" class="state hidden" onClick={() => changeDone(items)}><MdDone id="btDone" class="button" size={25}/></span>
+            <div class="addswipe">
+            <span id="mobilecheck" class="state" onClick={() => changeDone(items)}>
+              <MdDone id="btDone" class="button" size={25}/>
+            </span>
+            <span id="mobilebtdelete" class="delete" onClick={() => {alert('삭제 클릭'); removeList(items)}}>
+              <MdDelete size={20}/>
+            </span>
+            </div>
           </div>
+          </Swipe>
           )
       } else {
         return(
+          <Swipe
+          allowMouseEvents
+          onSwipeRight={() => onSwipeRight(index)}
+          onSwipeLeft={() => onSwipeLeft(index)}>
           <div class="todoList" onMouseOver={() => removeHide(index)} onMouseOut={() => addHide(index)}>
             <span id="btdelete" class="delete hidden" onClick={() => {alert('삭제 클릭'); removeList(items)}}><MdDelete size={20}/></span>
             <span id="listtime" class="todoItems"><AiOutlineClockCircle size={13}/>{items.startTime}~{items.endTime}</span>
             <span class="todoItemsContent">{items.content}</span>
             <span class="state" ><MdDone size={25}/></span>
             <span id="check" class="state hidden" onClick={() => changeNothing(items)}><AiOutlineLine id="btNothing" class="button" size={25}/></span>
+            <div class="addswipe">
+            <span id="mobilecheck" class="state" onClick={() => changeNothing(items)}>
+            <AiOutlineLine id="btNothing" class="button" size={25}/>
+            </span>
+            <span id="mobilebtdelete" class="delete" onClick={() => {alert('삭제 클릭'); removeList(items)}}>
+              <MdDelete size={20}/>
+            </span>
+            </div>
           </div>
+          </Swipe>
           )
       }
       
@@ -217,7 +263,9 @@ function App() {
       
     );
     return (
+      
       <div>{listItems}</div>
+      
     );
   }
   
@@ -257,11 +305,15 @@ function App() {
         <div>로딩중입니다!</div>
         
         </>
-        :
-        <div id="items">
-            <TodoList/>
-        </div>
+        :(
+          list.length===0?<div>일정이 없습니다.</div>:<div id="items">
+          <TodoList/>
+          </div>
+        )
+        
         }
+        
+        
         
         
         <div id="btnkakao" onClick={() => sendLink()}>

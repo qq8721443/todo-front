@@ -243,6 +243,30 @@ div#control input{
   justify-content: center;
 }
  
+.add {
+  
+  transition: .5s;
+}
+
+.addswipe{
+  display:flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width:0px;
+  overflow:hidden;
+  height:100%;
+  background-color: #2ec1ac;
+  opacity: 0.8;
+  transition: .5s;
+  position: absolute;
+  right:0px;
+  border-radius: 0px 10px 10px 0px;
+}
+
+.addswipe span{
+  margin:10px;
+}
+
 #content {
   background-color: white;
   border-radius: 5px;
@@ -291,5 +315,26 @@ div#control input{
     border-radius: 25px;
     box-shadow:3px 3px gray;
   }
+
+  .todoList{
+    position: relative;
+    display:flex;
+    height:80px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: center;
+  }
+
+  #listtime{
+    font-size: smaller;
+    margin-left: 10px;
+  }
   
+  #btdelete{
+    display:none;
+  }
+
+  #check{
+    display: none;
+  }
 }

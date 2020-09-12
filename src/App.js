@@ -212,7 +212,6 @@ function App() {
       if(items.state===0){
         return(
           <Swipe
-          allowMouseEvents
           onSwipeRight={() => onSwipeRight(index)}
           onSwipeLeft={() => onSwipeLeft(index)}>
           <div class="todoList" onMouseOver={() => removeHide(index)} onMouseOut={() => addHide(index)}>

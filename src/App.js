@@ -50,6 +50,7 @@ function App() {
     .then(json => {
       
       alert(JSON.stringify(json))
+      clearInput();
       //setLoading(false)
       getList()
 
@@ -175,6 +176,17 @@ function App() {
     .catch(e=>console.log(e))
   }
 
+  const clearInput = () => {
+    const temp = document.getElementsByTagName("input")
+    console.log(temp)
+    for (let i = 0; i<temp.length;i++){
+      if(temp[i].type === "text"){
+        console.log(temp[i].value)
+        temp[i].value = ""
+      }  
+    }
+  }
+
   function TodoList() {
     const listItems = list.map((items, index) =>{
       if(items.state===0){
@@ -234,10 +246,10 @@ function App() {
             <option class="dditem" value="정기">정기</option>
             <option class="dditem" value="나영">나영</option>
           </select>
-          <input type="text" id="time" required minLength="4" maxLength="4" size="10" placeholder="시작" onChange={StartTime}></input>
+          <input type="text" class="time" required minLength="4" maxLength="4" size="10" placeholder="시작" onChange={StartTime}></input>
           <span>~</span>
-          <input type="text" id="time" required minLength="4" maxLength="4" size="10" placeholder="종료" onChange={EndTime}></input>
-          <input type="text" id="content" required maxLength="100" size="10" placeholder="할 일을 입력해주세요" onChange={Text}></input>
+          <input type="text" class="time" required minLength="4" maxLength="4" size="10" placeholder="종료" onChange={EndTime}></input>
+          <input type="text" id="content" required maxLength="100" size="10" placeholder="할 일을 입력해주세요" onKeyPress={() => {if(window.event.keyCode === 13){submitFunction()}}} onChange={Text}></input>
           <input type="button" onClick={() => {alert(owner);submitFunction()}} id="submitbutton" value="등록"/>
         </div>
         {isLoading?
@@ -259,7 +271,9 @@ function App() {
         <span>일정 카카오톡으로 공유하기</span>
         </div>
         <div id="reset" onClick={() => removeAll()}>
-        <img src="https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg" width="30" alt="web server error"/>
+          <a href="#!">
+            <img src="https://www.flaticon.com/svg/static/icons/svg/2204/2204346.svg" width="30" alt="web server error"/>
+          </a>
         <span>전체 삭제하기</span>
         </div>
 

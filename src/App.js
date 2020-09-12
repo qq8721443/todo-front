@@ -190,7 +190,7 @@ function App() {
 
   const onSwipeLeft = (index) => {
     console.log(document.getElementsByClassName('todoList')[index].childNodes[5].style.width)
-    document.getElementsByClassName('todoList')[index].childNodes[5].style.width = "100px"
+    document.getElementsByClassName('todoList')[index].childNodes[5].style.width = "180px"
     //document.getElementsByClassName('todoList')[index].childNodes[5].style.display = "inline"
     //if(document.getElementsByClassName('todoList')[index].childNodes[5].classList.value ==="add"){
       //document.getElementsByClassName('todoList')[index].childNodes[5].classList.remove('add')
